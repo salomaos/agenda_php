@@ -1,49 +1,38 @@
 # Projeto para a aula eletiva de PHP - FATEC Mogi das Cruzes
+---
+
+**Theme:** Air - 100% Fully Responsive Free HTML5 Bootstrap Template
+
+**AUTHOR:** DESIGNED & DEVELOPED by FreeHTML5.co
+
+**Website:** http://freehtml5.co/
+**Twitter:** http://twitter.com/fh5co
+**Facebook:** http://facebook.com/fh5co
 
 
-*Theme:* Air - 100% Fully Responsive Free HTML5 Bootstrap Template
+**CREDITS:**
 
-*AUTHOR:* DESIGNED & DEVELOPED by FreeHTML5.co
-
-*Website:* http://freehtml5.co/
-*Twitter:* http://twitter.com/fh5co
-*Facebook:* http://facebook.com/fh5co
-
-
-*CREDITS:*
-
-Bootstrap
+- Bootstrap
 http://getbootstrap.com/
-
-jQuery
+- jQuery
 http://jquery.com/
-
-jQuery Easing
+- jQuery Easing
 http://gsgd.co.uk/sandbox/jquery/easing/
-
-Modernizr
+- Modernizr
 http://modernizr.com/
-
-Google Fonts
+- Google Fonts
 https://www.google.com/fonts/
-
-Icomoon
+- Icomoon
 https://icomoon.io/app/
-
-Respond JS
+- Respond JS
 https://github.com/scottjehl/Respond/blob/master/LICENSE-MIT
-
-animate.css
+- animate.css
 http://daneden.me/animate
-
-jQuery Waypoint
+- jQuery Waypoint
 https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
-
-Magnific Popup
+- Magnific Popup
 http://dimsemenov.com/plugins/magnific-popup/
-
-Demo Images:
+- Demo Images:
 http://unsplash.com
-
-Flexslider
+- Flexslider
 http://flexslider.woothemes.com/

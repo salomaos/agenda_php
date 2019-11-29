@@ -25,10 +25,14 @@ include_once "header.php";
                                 <b>E-mail: </b><?php echo $value->email; ?><br>
                                 <b>WhatsApp: </b><?php echo $value->whatsapp; ?><br>
                                 <b>Nascimento: </b><?php echo $value->dtnasc; ?><br>
-                                <button class="icone btn"><i class="fas fa-edit"></i></button>
-                                <button class="icone btn"><i class="fas fa-trash-alt"></i></button>
+                                <form action="deleteedit.php" method="post" style="float: left;">
+                                    <button name="edit" class="icone btn" value="<?php echo $value->email; ?>"><i class="fas fa-edit"></i></button>
+                                    <button name="delete" class="icone btn" value="<?php echo $value->id; ?>"><i class="fas fa-trash-alt"></i></button>
+                                </form>
                                 <button class="icone btn" onclick="myFunction('<?php echo $value->apelido; ?>', '<?php echo $value->id; ?>', '<?php echo $value->apelido . "phones"; ?>', 'phones')"><i class="fas fa-phone-alt"></i></button>
                                 <button id="<?php echo $value->id; ?>" class="icone btn" onclick="myFunction('<?php echo $value->apelido; ?>', '<?php echo $value->id; ?>', '<?php echo $value->apelido . "phones"; ?>', 'close')"><i class="fas fa-times"></i></button>
+
+
                             </div>
                             <div class="contato-card" id="<?php echo $value->apelido . 'phones'; ?>" style="display: none;">
                                 <b>Telefones</b><br>

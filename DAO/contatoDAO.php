@@ -79,4 +79,15 @@ class contatoDAO extends CRUD
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    public function deleteContato($idUsuario)
+    {
+        $sql = "DELETE FROM telefones WHERE id_contato = :idUsuario;";
+        $sql .= "DELETE FROM $this->tabela WHERE id = :idUsuario;";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
+        $stmt->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
+        return $stmt->execute();
+        # return $stmt->fetchAll();
+    }
 }

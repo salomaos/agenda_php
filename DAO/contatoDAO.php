@@ -71,10 +71,11 @@ class contatoDAO extends CRUD
         return $stmt->fetch();
     }
 
-    public function aniversariantes()
+    public function aniversariantes($idUsuario)
     {       
-        $sql = "SELECT extract(MONTH FROM dtnasc) as mes, COUNT(ID) as quantidade FROM contatos GROUP BY extract(month from dtnasc)";
+        $sql = "SELECT extract(MONTH FROM dtnasc) as mes, COUNT(id) as quantidade FROM contatos WHERE id_usuario = $idUsuario GROUP BY extract(month from dtnasc)";
         $stmt = DB::prepare($sql);
+        $stmt->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll();
     }

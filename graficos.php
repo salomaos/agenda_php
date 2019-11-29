@@ -26,7 +26,7 @@ $contatos = new contatos();
     function drawChart() {
     var data = google.visualization.arrayToDataTable([
         ['Task', 'Quantidade por mês'],
-        <?php foreach ($contatos->aniversariantes() as $key => $value) : ?>
+        <?php foreach ($contatos->aniversariantes($_SESSION["idUsuario"]) as $key => $value) : ?>
             [<?php echo json_encode($mes[$value->mes]); ?>, <?php echo json_encode(intval($value->quantidade)); ?>],
         <?php endforeach ?>
     ]);

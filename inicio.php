@@ -17,32 +17,34 @@ include_once "header.php";
             <div class="animate-box">
                 <div>
                     <?php foreach ($contatos->findContatos($_SESSION["idUsuario"]) as $key => $value) : ?>
-                        <div class="col-md-4" style="margin-bottom: 20px;">
-                            <button id="<?php echo $value->id; ?>" class="btn2 btn-primary" onclick="myFunction('<?php echo $value->apelido; ?>', '<?php echo $value->id; ?>', '<?php echo $value->apelido . "phones"; ?>', 'contact')"><?php echo $value->apelido; ?></button>
-                            <div class="contato-card" id="<?php echo $value->apelido; ?>" style="display: none;">
-                                <b>Nome: </b><?php echo $value->nome; ?><br>
-                                <b>Apelido: </b><?php echo $value->apelido; ?><br>
-                                <b>E-mail: </b><?php echo $value->email; ?><br>
-                                <b>WhatsApp: </b><?php echo $value->whatsapp; ?><br>
-                                <b>Nascimento: </b><?php echo $value->dtnasc; ?><br>
-                                <form action="deleteedit.php" method="post" style="float: left;">
-                                    <button name="edit" class="icone btn" value="<?php echo $value->email; ?>"><i class="fas fa-edit"></i></button>
-                                    <button name="delete" class="icone btn" value="<?php echo $value->id; ?>"><i class="fas fa-trash-alt"></i></button>
-                                </form>
-                                <button class="icone btn" onclick="myFunction('<?php echo $value->apelido; ?>', '<?php echo $value->id; ?>', '<?php echo $value->apelido . "phones"; ?>', 'phones')"><i class="fas fa-phone-alt"></i></button>
-                                <button id="<?php echo $value->id; ?>" class="icone btn" onclick="myFunction('<?php echo $value->apelido; ?>', '<?php echo $value->id; ?>', '<?php echo $value->apelido . "phones"; ?>', 'close')"><i class="fas fa-times"></i></button>
-
-
-                            </div>
-                            <div class="contato-card" id="<?php echo $value->apelido . 'phones'; ?>" style="display: none;">
-                                <b>Telefones</b><br>
+                    <table class="table table-hover">
+                        <tr>
+                            <td><p><?php echo $value->apelido; ?></p></td>
+                            <td><button class="btn btn-primary logout" style="float: right;" onclick="myFunction('<?php echo $value->id; ?>')">Exibir/Ocultar</button></td>
+                        </tr>
+                    </table>			
+                    <div id="<?php echo $value->id; ?>" style="display:none">
+                        <table class="table table-hover">
+                            <tr><td><?php echo $value->nome; ?></td></tr>
+                            <tr><td><?php echo $value->email; ?></td></tr>
+                            <tr><td><?php echo $value->whatsapp; ?></td></tr>
+                            <tr><td><?php echo $value->dtnasc; ?></td></tr>
+                            <tr><td>
+                                <table>
+                                <tr><td>Telefones</td></tr>                                
                                 <?php foreach ($contatos->findTelefones($value->id) as $chave => $valor) : ?>
-                                    <?php echo $valor->telefone . "<br>"; ?>
+                                    <tr><td><?php echo $valor->telefone . "<br>"; ?></td></tr>
                                 <?php endforeach; ?>
-                                <button id="<?php echo $value->id; ?>" class="icone btn" onclick="myFunction('<?php echo $value->apelido; ?>', '<?php echo $value->id; ?>', '<?php echo $value->apelido . "phones"; ?>', 'contact')"><i class="fas fa-address-book"></i></button>
-                                <button id="<?php echo $value->id; ?>" class="icone btn" onclick="myFunction('<?php echo $value->apelido; ?>', '<?php echo $value->id; ?>', '<?php echo $value->apelido . "phones"; ?>', 'close')"><i class="fas fa-times"></i></button>
-                            </div>
-                        </div>
+                                </table>
+                            </td></tr>
+                            <tr><td>
+                            <form action="deleteedit.php" method="post" style="float: left;">
+                                <button name="edit" class="icone btn" value="<?php echo $value->email; ?>"><i class="fas fa-edit"></i></button>
+                                <button name="delete" class="icone btn" value="<?php echo $value->id; ?>"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                            </td></tr>
+                        </table><br>                        
+                    </div>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -70,24 +72,13 @@ include_once "header.php";
 <!-- Main -->
 <script type="text/javascript" src="js/main.js"></script>
 
-<script type="text/javascript">
-    function myFunction(p, q, r, option) {
+<script>
+    function myFunction(p) {
         var x = document.getElementById(p);
-        var btnContato = document.getElementById(q);
-        var phones = document.getElementById(r);
-
-        if (option == 'contact') {
+        if (x.style.display == 'none') {
             x.style.display = 'block';
-            btnContato.style.display = 'none';
-            phones.style.display = 'none';
-        } else if (option == 'phones') {
+        } else {
             x.style.display = 'none';
-            btnContato.style.display = 'none';
-            phones.style.display = 'block';
-        } else if (option == 'close') {
-            x.style.display = 'none';
-            btnContato.style.display = 'block';
-            phones.style.display = 'none';
         }
     }
 </script>

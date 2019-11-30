@@ -40,16 +40,32 @@ class contatoDAO extends CRUD
         return $stmt->fetchAll();
     }
 
+    public function updateTelefones($email)
+    {
+        $id = $this->findContatoByEmail($email)->id;
+        #foreach ($this->GetTelefone() as $tel) {
+            #$values .= "(" . $id . ", " . $tel . "),";
+        #}
+        #$values = substr($values, 0, -1);
+        $sql = "DELETE FROM telefones WHERE id_contato = $id;";
+        foreach ($this->GetTelefone() as $tel) {
+            $sql .= "INSERT INTO telefones (id_contato, telefone) VALUES ($id, $tel);";
+            #$values .= "(" . $id . ", " . $tel . "),";
+        }
+        #$sql .= "INSERT INTO telefones (id_contato, telefone) VALUES " . $values . ";";
+        $stmt = DB::prepare($sql);
+        return $stmt->execute();
+    }
+
     public function update($id)
     {
-        $sql = "UPDATE $this->tabela (nome, apelido, email, dtnasc, whatsapp, id_usuario) VALUES (:nome, :apelido, :email, :nascimento, :whatsapp, :idUsuario)";
+        $sql = "UPDATE $this->tabela SET nome=:nome, apelido=:apelido, dtnasc=:nascimento, email=:email, whatsapp=:whatsapp WHERE email=:email";
         $stmt = DB::prepare($sql);
-        $stmt->bindValue(':nome', $this->GetNome());
-        $stmt->bindValue(':email', $this->GetEmail());
+        $stmt->bindValue(':nome', $this->GetNome());       
         $stmt->bindValue(':apelido', $this->GetApelido());
         $stmt->bindValue(':nascimento', $this->GetNascimento());
+        $stmt->bindValue(':email', $this->GetEmail());        
         $stmt->bindValue(':whatsapp', $this->GetWhatsapp());
-        $stmt->bindValue(':idUsuario', $this->GetIdUsuario());
         return $stmt->execute();
     }
 

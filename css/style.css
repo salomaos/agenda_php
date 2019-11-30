@@ -1493,12 +1493,12 @@ input[type="text"] {
   width: 100%;
 }
 
-.btn2 {
+/* .btn2 {
   width: 100%;
   height: 270px;
   border-radius: 25px;
   font-size: 50px;
-}
+} */
 
 .contato-card {
   height: 270px;
@@ -1506,4 +1506,13 @@ input[type="text"] {
 
 .mb-50 {
   margin-bottom: 50px;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #DD356E;
+  color: white;
+}
+
+.table {
+  font-weight: bold;
 }
